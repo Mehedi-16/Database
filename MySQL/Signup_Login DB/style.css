@@ -1,0 +1,67 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif; /* Sets the font family for the body text */
+    background-color: #f4f4f4; /* Sets a light gray background color */
+    margin: 0; /* Removes default margin around the body */
+    padding: 0; /* Removes default padding around the body */
+    display: flex; /* Uses Flexbox layout for positioning */
+    justify-content: center; /* Centers the content horizontally */
+    align-items: center; /* Centers the content vertically */
+    height: 100vh; /* Makes the body fill the entire height of the viewport */
+}
+
+/* Container styling for the main content */
+.container {
+    width: 100%; /* Ensures the container takes full width */
+    max-width: 400px; /* Limits the maximum width to 400px */
+    padding: 30px; /* Adds padding inside the container */
+    background-color: #fff; /* Sets a white background for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow around the container */
+    border-radius: 8px; /* Rounds the corners of the container */
+    text-align: center; /* Centers the text inside the container */
+}
+
+/* Header styling (for <h2> tags) */
+h2 {
+    margin-bottom: 20px; /* Adds space below the header */
+    color: #333; /* Sets a dark gray color for the header text */
+}
+
+/* General input field styling */
+input {
+    width: 100%; /* Makes the input fields take full width of the container */
+    padding: 12px; /* Adds padding inside the input fields */
+    margin: 10px 0; /* Adds vertical spacing between input fields */
+    border: 1px solid #ddd; /* Sets a light gray border around the input fields */
+    border-radius: 5px; /* Rounds the corners of the input fields */
+    box-sizing: border-box; /* Includes padding and border in the element's total width */
+}
+
+/* Specific styling for the submit button */
+input[type="submit"] {
+    background-color: #4CAF50; /* Sets a green background color */
+    color: white; /* Sets the text color to white */
+    border: none; /* Removes the border from the submit button */
+    cursor: pointer; /* Changes the cursor to a pointer to indicate it's clickable */
+}
+
+/* Submit button hover effect */
+input[type="submit"]:hover {
+    background-color: #45a049; /* Changes the background color to a darker green on hover */
+}
+
+/* Styling for the link section (back to login) */
+.link-section {
+    margin-top: 15px; /* Adds space above the link section */
+}
+
+/* Link styling */
+.link-section a {
+    color: #007BFF; /* Sets the link color to blue */
+    text-decoration: none; /* Removes the underline from links */
+}
+
+/* Link hover effect */
+.link-section a:hover {
+    text-decoration: underline; /* Underlines the link when hovered */
+}
