@@ -77,7 +77,7 @@ SELECT * FROM C##BOB.NEWSPAPER;
 - Logs in as `C##JUDY` and selects all records from `C##BOB.NEWSPAPER`
 
 ```sql
-INSERT INTO NEWSPAPER VALUES ('Sadman is alive', 'F', 6);
+INSERT INTO NEWSPAPER VALUES ('Mehedi is alive', 'F', 6);
 ```
 - Inserts a new record into `NEWSPAPER`
 
