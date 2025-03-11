@@ -7,17 +7,21 @@ These SQL queries are designed to retrieve and manipulate data from the tables a
 
 1. **Retrieve Department Names from Instructor Table**
     ```sql
-    SELECT dept_name FROM instructor;
+    SELECT dept_name  
+    FROM instructor;
     ```
 
 2. **Calculate 10% Salary Increase for Instructors**
     ```sql
-    SELECT ID, name, dept_name, salary * 1.1 FROM instructor;
+    SELECT ID, name, dept_name, salary * 1.1 
+    FROM instructor;
     ```
 
 3. **Retrieve Instructors in Computer Science with Salary > 70000**
     ```sql
-    SELECT name FROM instructor WHERE dept_name = 'Comp. Sci.' AND salary > 70000;
+    SELECT name 
+    FROM instructor 
+    WHERE dept_name = 'Comp. Sci.' AND salary > 70000;
     ```
 
 4. **Join Instructor and Department Tables**
@@ -64,27 +68,37 @@ These SQL queries are designed to retrieve and manipulate data from the tables a
 
 10. **Retrieve Departments in Buildings Containing "Whit"**
     ```sql
-    SELECT dept_name FROM department WHERE building LIKE '%Whit%';
+    SELECT dept_name 
+    FROM department 
+    WHERE building LIKE '%Whit%';
     ```
 
 11. **Retrieve Physics Instructors Ordered by Name**
     ```sql
-    SELECT name FROM instructor WHERE dept_name = 'Physics' ORDER BY name;
+    SELECT name 
+    FROM instructor 
+    WHERE dept_name = 'Physics' ORDER BY name;
     ```
 
 12. **Retrieve All Instructors Ordered by Salary (Descending) and Name (Ascending)**
     ```sql
-    SELECT * FROM instructor ORDER BY salary DESC, name ASC;
+    SELECT * 
+    FROM instructor 
+    ORDER BY salary DESC, name ASC;
     ```
 
 13. **Retrieve Instructors with Salaries Between 90000 and 100000**
     ```sql
-    SELECT name FROM instructor WHERE salary BETWEEN 90000 AND 100000;
+    SELECT name 
+    FROM instructor 
+    WHERE salary BETWEEN 90000 AND 100000;
     ```
 
 14. **Retrieve Instructors with Salaries Between 90000 and 100000 (Alternative)**
     ```sql
-    SELECT name FROM instructor WHERE salary <= 100000 AND salary >= 90000;
+    SELECT name 
+    FROM instructor 
+    WHERE salary <= 100000 AND salary >= 90000;
     ```
 
 15. **Retrieve Biology Instructors and Their Course IDs**
