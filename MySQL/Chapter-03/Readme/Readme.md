@@ -131,7 +131,15 @@ WHERE instructor.ID = teaches.ID AND instructor.dept_name = 'Comp. Sci.';
    from instructor as T, instructor as S
    where T.salary > S.salary and S.dept_name = 'Biology';
    ```
-
+- Alternative
+  ```sql
+  SELECT name
+  FROM instructor
+  WHERE salary> some
+  (SELECT salary
+  from instructor
+  WHERE dept_name='biology');
+  ```
 
 1. **Equality Operation on Strings (Case Sensitivity)**
    ```sql
