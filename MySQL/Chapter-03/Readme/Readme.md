@@ -530,6 +530,14 @@ HAVING AVG(salary) >= ALL (
     GROUP BY dept_name
 );
 ```
+- Alternative
+```sql
+SELECT dept_name
+FROM instructor
+GROUP BY dept_name
+ORDER BY AVG(salary) DESC
+LIMIT 1;
+```
 
 ## 8. Find all courses taught in both Fall 2017 and Spring 2018 (using EXISTS)
 ```sql
