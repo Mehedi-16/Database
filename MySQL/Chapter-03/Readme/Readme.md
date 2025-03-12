@@ -181,11 +181,6 @@ WHERE instructor.ID = teaches.ID AND instructor.dept_name = 'Comp. Sci.';
    select trim(lead(name))
    from department;
    ```
-- LIKE '%Watson%'	"Watson" শব্দটি থাকা সব মান
-- LIKE 'Intro%'	"Intro" দিয়ে শুরু হওয়া সব মান
--  LIKE '%Comp%'	"Comp" থাকা সব মান
--  LIKE '___'	ঠিক ৩ অক্ষরের মান
-- LIKE '%'	সব মান (ফিল্টার ছাড়া)
   
 4. **Pattern Matching with LIKE**
    ```sql
@@ -210,7 +205,12 @@ WHERE instructor.ID = teaches.ID AND instructor.dept_name = 'Comp. Sci.';
    from department
    where building like '%';
    ```
-
+- LIKE '%Watson%'	"Watson" শব্দটি থাকা সব মান
+- LIKE 'Intro%'	"Intro" দিয়ে শুরু হওয়া সব মান
+-  LIKE '%Comp%'	"Comp" থাকা সব মান
+-  LIKE '___'	ঠিক ৩ অক্ষরের মান
+- LIKE '%'	সব মান (ফিল্টার ছাড়া)
+  
 5. **Using Escape Character in LIKE**
    ```sql
    select dept_name
