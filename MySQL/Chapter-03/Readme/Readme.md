@@ -571,12 +571,14 @@ AND EXISTS (
 
 ## 9. Find all students who have taken all courses offered in the Biology department
 ```sql
-SELECT S.ID, S.name
-FROM student AS S
+SELECT ID,name
+FROM student
 WHERE NOT EXISTS (
     (SELECT course_id FROM course WHERE dept_name = 'Biology')
     EXCEPT
-    (SELECT T.course_id FROM takes AS T WHERE S.ID = T.ID)
+    (SELECT course_id 
+     FROM takes  
+     WHERE student.ID = takes.ID)
 );
 ```
 
