@@ -743,6 +743,12 @@ These are the questions and SQL commands in the same style you provided. Let me 
     FROM teaches
     WHERE ID IN (SELECT ID FROM instructor WHERE dept_name = 'Comp. Sci.');
     ```
+    - Alternative
+      ```
+        SELECT course_id
+      FROM teaches,instructor
+      WHERE instructor.ID=teaches.ID AND dept_name = 'Comp. Sci.';
+```
 
 7. **Retrieve Instructors Teaching More Than One Course**
     ```sql
