@@ -86,6 +86,9 @@ These SQL queries are designed to retrieve and manipulate data from the tables a
     FROM instructor 
     ORDER BY salary DESC, name ASC;
     ```
+- ORDER BY salary DESC → প্রথমে salary কলাম অনুযায়ী সাজাবে, যেখানে সবচেয়ে বেশি বেতনপ্রাপ্ত ব্যক্তির তথ্য প্রথমে আসবে।
+
+  name ASC → যদি দুইজনের salary একই হয়, তাহলে তাদের নাম বর্ণানুক্রমিকভাবে (A-Z) সাজাবে।
 
 13. **Retrieve Instructors with Salaries Between 90000 and 100000**
     ```sql
