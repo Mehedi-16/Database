@@ -216,7 +216,9 @@ These SQL queries are designed to retrieve and manipulate data from the tables a
     GROUP BY dept_name;
     ```
 
-8. **Count Instructors Teaching in Spring 2018 by Department**
+8. **“Find
+      the number of instructors in each department who teach a course in the Spring 2018
+      semester.**
     ```sql
     SELECT instructor.dept_name, COUNT(DISTINCT teaches.ID) AS instr_count
     FROM instructor, teaches
