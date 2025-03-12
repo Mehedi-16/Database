@@ -405,10 +405,10 @@ WHERE instructor.ID = teaches.ID AND instructor.dept_name = 'Comp. Sci.';
 
 7. **Find the number of instructors in each department who teach a course in the Spring 2018 semester:**
    ```sql
-   select dept_name, count(distinct ID) as instr_count
-   from instructor, teaches
-   where instructor.ID = teaches.ID and semester = 'Spring' and year = 2018
-   group by dept_name;
+   SELECT instructor.dept_name, COUNT(DISTINCT teaches.ID) AS instr_count
+   FROM instructor, teaches
+   WHERE instructor.ID = teaches.ID AND semester = 'Spring' AND year = 2018
+   GROUP BY dept_name;
    ```
 
 8. **Erroneous query where ID does not appear in the group by clause:**
