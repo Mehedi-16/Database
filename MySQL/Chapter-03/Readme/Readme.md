@@ -442,7 +442,7 @@ WHERE instructor.ID = teaches.ID AND instructor.dept_name = 'Comp. Sci.';
    FROM student, takes
    WHERE student.ID = takes.ID AND year = 2017
    GROUP BY course_id, semester, year, sec_id
-   HAVING COUNT(ID) >= 2;
+   HAVING COUNT(takes.ID) >= 2;
    ```
 
 3. **Query to calculate the sum of all salaries:**
