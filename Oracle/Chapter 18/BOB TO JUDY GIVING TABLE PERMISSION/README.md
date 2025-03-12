@@ -137,7 +137,7 @@ SELECT * FROM C##BOB.NEWSPAPER;
 
 #### Insert a New Record into the `NEWSPAPER` Table:
 ```sql
-INSERT INTO NEWSPAPER VALUES ('Mehedi is alive', 'F', 6);
+INSERT INTO C##BOB.NEWSPAPER VALUES ('Mehedi is alive', 'F', 6);
 ```
 
 #### Update Existing Records in the `NEWSPAPER` Table:
