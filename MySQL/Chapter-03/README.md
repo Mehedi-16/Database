@@ -187,6 +187,22 @@ These SQL queries are designed to retrieve and manipulate data from the tables a
     ) AS subquery
     WHERE avg_salary > 42000;
     ```
+- ১. সাবকোয়েরি (subquery) কী করছে?
+    ```
+    SELECT dept_name, AVG(salary) AS avg_salary
+    FROM instructor
+    GROUP BY dept_name;
+    ```
+    ➡ এখানে instructor টেবিল থেকে প্রতিটি dept_name অনুযায়ী salary এর গড় (AVG) বের করা হচ্ছে।
+    ➡ এটি subquery হিসেবে কাজ করবে এবং একটি নতুন অস্থায়ী টেবিল তৈরি করবে, যাকে subquery বলা হয়েছে।
+
+- ২. মেইন কোয়েরি কী করছে?
+```
+    SELECT dept_name, avg_salary
+    FROM (subquery)
+    WHERE avg_salary > 42000;
+```
+    ➡ এখন এই subquery থেকে কেবল যেসব dept_name-এর avg_salary 42000-এর বেশি, সেগুলো ফিল্টার করা হচ্ছে।
 
 6. **Count Total Courses**
     ```sql
