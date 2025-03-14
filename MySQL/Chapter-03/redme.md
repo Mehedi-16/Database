@@ -1,4 +1,4 @@
-
+# MID QUESTIONS SOLVE
 Here are the SQL queries to solve each question:
 
 ### **(i) Create a database and table, then insert tuples**
