@@ -189,4 +189,56 @@ This repository contains various queries and their relational algebra expression
 - **σ e.city = c.company-city**: সিলেক্ট করা হচ্ছে যেখানে কর্মচারীর শহর এবং কোম্পানির শহর এক।
 - **∏ emp-id, emp-name**: কেবল `emp-id` এবং `emp-name` কলামগুলো প্রজেক্ট করা হচ্ছে।
 
+********************************************************************************************************************************************************************************
 
+# 🗂️ Database Schema
+
+- **employee(empno, name, office, age)**
+- **book(isbn, title, authors, publisher)**
+- **loan(empno, isbn, date)**
+
+---
+
+## 🔍 Queries and Solutions
+
+### 1. Find the names of employees who have borrowed a book published by **McGraw-Hill**.
+
+```plaintext
+π_name ( (employee ⨝ loan) ⨝ σ_publisher='McGraw-Hill'(book) )
+```
+
+---
+
+### 2. Find the names of employees who have borrowed **all books** published by **McGraw-Hill**.
+
+```plaintext
+π_name (employee ⨝ ((loan ⨝ σ_publisher='McGraw-Hill'(book)) ÷ π_isbn (σ_publisher='McGraw-Hill'(book))) )
+```
+
+---
+
+### 3. Find the names of employees who have borrowed **more than five different books** published by **McGraw-Hill**.
+
+```plaintext
+π_name (
+  σ_count>5 (
+    γ_empno, name; COUNT(isbn)→count (
+      (employee ⨝ loan ⨝ σ_publisher='McGraw-Hill'(book))
+    )
+  )
+)
+```
+
+---
+
+### 4. For each publisher, find the names of employees who have borrowed **more than five books** of that publisher.
+
+```plaintext
+π_name, publisher (
+  σ_count>5 (
+    γ_empno, name, publisher; COUNT(isbn)→count (
+      employee ⨝ loan ⨝ book
+    )
+  )
+)
+```
