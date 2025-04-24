@@ -1,6 +1,16 @@
 
 # 1.Employee Database Queries (Relational Algebra)
 
+```
+Symbol | Name | Purpose
+| σ -> Select ->         Selects specific rows from a relation.
+∏ -> Project ->          Selects specific columns from a relation.
+∪ -> Union ->            Combines two relations by including all tuples.
+– -> Set Difference ->   Gives the tuples present in one relation but not in the other.
+× -> Cartesian Product-> Combines every tuple of one relation with every tuple of the other.
+ρ -> Rename ->           Renames a relation or column.
+```
+
 এই রিপোজিটরিতে বিভিন্ন কুয়েরি এবং তার রিলেশনাল অ্যালজেব্রা এক্সপ্রেশন দেওয়া হয়েছে যা একটি **Employee Database** এর ওপর কাজ করে। ডেটাবেসে নিম্নলিখিত টেবিলগুলো রয়েছে:
 
 - **employee**(e-name, street, city)
