@@ -1,6 +1,5 @@
 
 # University Database Schema 
-### 🔹 i. **Find the titles of courses in the Comp. Sci. department that have 3 credits.**  
 
 ```
 student(s_ID, s_name, dept_name)
@@ -18,6 +17,7 @@ section(course_id, sec_id, semester, year, building, room_number, time_slot_id)
 department(dept_name, building, budget)
 ```
 
+### 🔹 i. **Find the titles of courses in the Comp. Sci. department that have 3 credits.**  
 👉 Comp. Sci. ডিপার্টমেন্টে যেসব কোর্স ৩ ক্রেডিটের — ওগুলোর নাম বের করো।
 
 ```sql
