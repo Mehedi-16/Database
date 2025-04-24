@@ -78,10 +78,10 @@ ORDER BY ratio ASC;
 
 ---
 
-**********************************************************************************************************************************************************************************************
+**************************************************************************************************************************************************************************************
 ---
 
-```markdown
+
 # University Schema SQL Operations
 
 This repository contains SQL statements to perform operations using the **University Schema**. The tasks involve inserting, deleting, and modifying data for courses, sections, and enrollments.
