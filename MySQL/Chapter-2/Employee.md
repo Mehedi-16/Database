@@ -10,7 +10,7 @@
 
 ## Queries and Relational Algebra Expressions
 
-### 1. Find the names, street address, and cities of all employees who work for Rupali Bank and earn more than 50,000 taka per month.
+### 1. Find the names, street address, and cities of all employees who work for Rupali Bank and earn more than 50,000 taka per month. assume each persion work for at most one company.
 **Query**:  
 "রূপালী ব্যাংকে কাজ করা এবং যাদের বেতন ৫০,০০০ টাকার বেশি—তাদের নাম, রাস্তার ঠিকানা এবং শহরের নাম বের করো।"
 
@@ -75,7 +75,7 @@
 
 ---
 
-### 4. Find the names of all employees who do not work for the First Bank Corporation.
+### 4. Find the names of all employees in the database who do not work for the First Bank Corporation. Assume that all people work for exactly one company.
 **Query**:  
 "যারা First Bank Corporation-এ কাজ করে না—তাদের নাম বের করো।"
 
