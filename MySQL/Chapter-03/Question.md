@@ -12,7 +12,7 @@ WHERE dept_name = 'Comp. Sci.' AND credits = 3;
 ---
 
 ### 🔹 ii. **Find the IDs of all students who were taught by an instructor named Einstein (no duplicates).**  
-👉 Einstein নামের শিক্ষক যাদের ক্লাস নিয়েছেন, সেইসব students-এর ID (repeat ছাড়া) দাও।
+👉 Einstein নামের শিক্ষক যাদের ক্লাস নিয়েছেন, সেইসব students-এর ID (repeat ছাড়া) দাও।\n
 ভাবো: instructor + teaches + takes — এই তিনটা জোড়া দিয়ে দেখতে হবে কে কাকে ক্লাস নিয়েছে।
 ```sql
 SELECT DISTINCT takes.s_ID
