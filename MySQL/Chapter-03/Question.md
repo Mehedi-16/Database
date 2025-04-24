@@ -77,3 +77,99 @@ ORDER BY ratio ASC;
 ```
 
 ---
+
+**********************************************************************************************************************************************************************************************
+---
+
+```markdown
+# University Schema SQL Operations
+
+This repository contains SQL statements to perform operations using the **University Schema**. The tasks involve inserting, deleting, and modifying data for courses, sections, and enrollments.
+
+## Operations
+
+### a. Create a New Course
+Add a course `CS-001` titled **"Weekly Seminar"** with 0 credits under the `Comp. Sci.` department.
+
+```sql
+INSERT INTO course (course_id, title, dept_name, credits)
+VALUES ('CS-001', 'Weekly Seminar', 'Comp. Sci.', 0);
+```
+
+---
+
+### b. Create a Section
+Add a section of course `CS-001` in **Fall 2017**, with `sec_id = 1`. The location is not yet specified.
+
+```sql
+INSERT INTO section (course_id, sec_id, semester, year, building, room_number, time_slot_id)
+VALUES ('CS-001', '1', 'Fall', 2017, NULL, NULL, NULL);
+```
+
+---
+
+### c. Enroll Students
+Enroll all students in the `Comp. Sci.` department into this new section.
+
+```sql
+INSERT INTO takes (ID, course_id, sec_id, semester, year, grade)
+SELECT ID, 'CS-001', '1', 'Fall', 2017, NULL
+FROM student
+WHERE dept_name = 'Comp. Sci.';
+```
+
+---
+
+### d. Delete Enrollment for a Specific Student
+Remove the student with ID `12345` from the above section.
+
+```sql
+DELETE FROM takes
+WHERE ID = 12345 AND course_id = 'CS-001' AND sec_id = '1'
+      AND semester = 'Fall' AND year = 2017;
+```
+
+---
+
+### e. Delete the Course
+Remove course `CS-001`. ⚠️ **Important:** You must delete all related sections before deleting the course to maintain referential integrity.
+
+```sql
+-- Step 1: Delete related sections
+DELETE FROM section
+WHERE course_id = 'CS-001';
+
+-- Step 2: Delete the course
+DELETE FROM course
+WHERE course_id = 'CS-001';
+```
+
+---
+
+### f. Delete Takes Records for Courses Containing "Advanced"
+Remove all `takes` records for courses that contain the word "advanced" (case-insensitive) in the title.
+
+```sql
+DELETE FROM takes
+WHERE course_id IN (
+    SELECT course_id FROM course
+    WHERE LOWER(title) LIKE '%advanced%'
+);
+```
+
+---
+
+## Schema Assumptions
+
+- Tables used: `course`, `section`, `student`, `takes`
+- Common fields:
+  - `course_id`, `sec_id`, `semester`, `year`, `ID`, `dept_name`, `title`, `credits`, etc.
+
+---
+
+## License
+This project is open source and available under the [MIT License](LICENSE).
+
+```
+
+Let me know if you want to include schema diagrams or ER diagrams too!
