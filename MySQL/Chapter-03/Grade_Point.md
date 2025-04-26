@@ -1,8 +1,8 @@
 Suppose you are given a relation grade points (grade, points) that provides a conversion from letter 6 grades in the takes relation to numeric scores. Given the preceding relation, and our university schema, write each of the following queries in SQL. You may assume for simplicity that no takes tuple has the null value for grade. a.
-a)Find the total grade points earned by the student with ID '12345', across ali courses taken by the student.
-b)Find the grade point average (GPA) for the above student, that is, the total grade points divided by the total credits for the associated courses.
+a)Find the total grade points earned by the student with ID '12345', across ali courses taken by the student.<br>
+b)Find the grade point average (GPA) for the above student, that is, the total grade points divided by the total credits for the associated courses.<br>
 
-c)Find the ID and the grade-point average of each student.
+c)Find the ID and the grade-point average of each student.<br>
 d)Insert every student whose tot cred attribute is greater than 100 as an instructor in the same department, with a salary of 10,000 taka.
 thael function on strings
 
