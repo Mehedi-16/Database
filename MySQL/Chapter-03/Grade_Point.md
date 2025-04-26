@@ -1,3 +1,10 @@
+Suppose you are given a relation grade points (grade, points) that provides a conversion from letter 6 grades in the takes relation to numeric scores. Given the preceding relation, and our university schema, write each of the following queries in SQL. You may assume for simplicity that no takes tuple has the null value for grade. a.
+a)Find the total grade points earned by the student with ID '12345', across ali courses taken by the student.
+b)Find the grade point average (GPA) for the above student, that is, the total grade points divided by the total credits for the associated courses.
+
+c)Find the ID and the grade-point average of each student.
+d)Insert every student whose tot cred attribute is greater than 100 as an instructor in the same department, with a salary of 10,000 taka.
+thael function on strings
 
 ### (a) **প্রশ্ন:**  
 **Find the total grade-points earned by the student with ID '12345', across all courses taken by the student.**
@@ -82,6 +89,30 @@ UNION
 
 ---
 
+### (d) **প্রশ্ন:**  
+**Insert every student whose `tot_cred` attribute is greater than 100 as an instructor in the same department, with a salary of 10,000 taka.**
+
+**SQL কোড:**
+```sql
+INSERT INTO instructor (ID, department, salary)
+SELECT ID, department, 10000
+FROM student
+WHERE tot_cred > 100;
+```
+
+### **ব্যাখ্যা:**
+1. **`INSERT INTO instructor (ID, department, salary)`**  
+   এখানে আমরা `instructor` টেবিলে নতুন রেকর্ড ইনসার্ট করছি। `ID`, `department`, এবং `salary` ফিল্ডে মান ইনসার্ট হবে।
+   
+2. **`SELECT ID, department, 10000`**  
+   এখানে, আমরা `student` টেবিল থেকে `ID` এবং `department` নির্বাচন করছি এবং তাদের জন্য `salary` ১০,০০০ টাকা সেট করছি।
+   
+3. **`WHERE tot_cred > 100`**  
+   যাদের `tot_cred` (মোট ক্রেডিট) ১০০ এর বেশি, শুধুমাত্র তাদের তথ্য নির্বাচন করা হবে।  
+
+---
+
+
 ### **সংক্ষেপে ব্যাখ্যা:**
 
 | প্রশ্ন | কাজ কী | সমস্যা | সমাধান |
@@ -90,6 +121,4 @@ UNION
 | (b) | GPA বের করা | ডিভাইড বাই জিরো (যদি কোর্স না নেয়) | `UNION` দিয়ে `NULL` দেখানো |
 | (c) | প্রতিটি স্টুডেন্টের GPA বের করা | যারা কোর্স নেয়নি | `UNION` দিয়ে `NULL` যোগ করা |
 
----
 
-এইভাবে প্রতিটি প্রশ্নের জন্য SQL কোড এবং ব্যাখ্যা দেওয়া হয়েছে। আশা করি তোমার সব প্রশ্নের উত্তর পরিষ্কার হয়ে গেছে! যদি আরও কিছু লাগে, আমাকে বলো! 😊
