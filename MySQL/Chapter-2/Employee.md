@@ -204,7 +204,8 @@ This repository contains various queries and their relational algebra expression
 ### 1. Find the names of employees who have borrowed a book published by **McGraw-Hill**.
 
 ```plaintext
-π_name ( (employee ⨝ loan) ⨝ σ_publisher='McGraw-Hill'(book) )
+π_name ( σ b.publisher = 'McGraw-Hill' ( (employee e ⨝ e.empno = l.empno loan l) ⨝ l.isbn = b.isbn book b ) )
+
 ```
 
 ---
