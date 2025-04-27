@@ -1,4 +1,5 @@
 # Write the following queries in relational algebra, using the university schema.
+<img width="776" alt="Screenshot 2025-04-26 at 4 33 39 PM" src="https://github.com/user-attachments/assets/21e5cbee-1dc6-40e2-90f1-a7bbdfdc806a" />
 
 ### a. Find the ID and name of each instructor in the Physics department.
 
