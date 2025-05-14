@@ -28,10 +28,15 @@ WHERE dept_name = 'Comp. Sci.' AND credits = 3;
 ### ✅ 2. **Find the IDs of all students who were taught by an instructor named Einstein; make sure there are no duplicates in the result.**
 
 ```sql
-SELECT DISTINCT teaches.ID
-FROM teaches,instructor
-WHERE teaches.ID = instructor.ID
-AND instructor.name = 'Einstein';
+SELECT DISTINCT student.ID
+FROM student, takes, teaches, instructor
+WHERE student.ID = takes.ID
+  AND takes.course_id = teaches.course_id
+  AND takes.sec_id = teaches.sec_id
+  AND takes.semester = teaches.semester
+  AND takes.year = teaches.year
+  AND teaches.ID = instructor.ID
+  AND instructor.name = 'Einstein';
 ```
 ---
 
