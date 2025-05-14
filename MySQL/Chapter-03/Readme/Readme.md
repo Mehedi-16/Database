@@ -315,7 +315,8 @@ WHERE instructor.ID = teaches.ID AND instructor.dept_name = 'Comp. Sci.';
     WHERE semester = 'Spring' AND year = 2018);
    ```
 
-5. **Intersection of courses taught in both Fall 2017 and Spring 2018**:
+5. **Write an SQL query to find the course IDs of courses that were offered in both Fall 2017 and Spring 2018 semesters.**:<br>
+     AND হলেই INTERSECT
    ```sql
    (SELECT course_id
     FROM section
