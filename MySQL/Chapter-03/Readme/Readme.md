@@ -563,6 +563,7 @@ WHERE salary > ALL (
 );
 
 ```
+#### note এই দুটি প্রশ্নের মধ্যে পার্থক্য হলো, প্রথম প্রশ্নে কমপক্ষে এক জন ইনস্ট্রাক্টরের salary এর তুলনায় বেশি হতে হবে, আর দ্বিতীয় প্রশ্নে সব ইনস্ট্রাক্টরের salary থেকে বেশি হতে হবে।
 
 ## 7. Find the departments that have the highest average salary
 ```sql
