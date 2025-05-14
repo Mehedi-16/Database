@@ -755,7 +755,9 @@ WHERE EXISTS (
    VALUES ('CS-437', 'Database Systems', 'Comp. Sci.', 4);
    ```
 
-#### 8. **Insert Students from the Music Department with More Than 144 Credits into the Instructor Table**
+#### 8. **এই SQL কোয়েরিটি একটি প্রশ্নের উত্তর হতে পারে:
+
+**"Insert students from the Music department with more than 144 credits into the Instructor table, assigning them a salary of 18000."**
    This query inserts students from the `Music` department who have more than 144 credits into the `instructor` table.
 
    ```sql
