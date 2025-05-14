@@ -549,8 +549,12 @@ WHERE salary > SOME (
 
 ```
 
-## 6. Find the names of all instructors whose salary is greater than every instructor in the Biology department
+## 6. Find the names of all instructors that have a salary value greater than that of each
+instructor in the Biology department.
+<br>
+Find the names of all instructors whose salary is greater than every instructor in the Biology department
 ```sql
+
 SELECT name
 FROM instructor
 WHERE salary > ALL (
@@ -558,6 +562,7 @@ WHERE salary > ALL (
     FROM instructor
     WHERE dept_name = 'Biology'
 );
+
 ```
 
 ## 7. Find the departments that have the highest average salary
