@@ -426,6 +426,7 @@ Having avg(salary);
    ```
 
 7. **Find the number of instructors in each department who teach a course in the Spring 2018 semester:**
+   #### Note: Each থাকলেই group by করতে হবে ####
    ```sql
    SELECT instructor.dept_name, COUNT(DISTINCT teaches.ID) AS instr_count
    FROM instructor, teaches
