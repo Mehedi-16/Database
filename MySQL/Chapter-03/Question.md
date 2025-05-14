@@ -158,9 +158,79 @@ LEFT JOIN teaches ON instructor.ID = teaches.ID
 GROUP BY instructor.ID, instructor.name;
 ```
 
+# Another....
+
+### 🔹 **a. Question:**
+
+**Find the IDs of all students (in descending order) who were taught by an instructor named 'Lembr'. Make sure there are no duplicate student IDs in the result.**
+
+✅ **Answer:**
+
+```sql
+SELECT DISTINCT takes.ID
+FROM instructor, teaches, takes
+WHERE instructor.ID = teaches.ID
+  AND teaches.course_id = takes.course_id
+  AND teaches.sec_id = takes.sec_id
+  AND teaches.semester = takes.semester
+  AND teaches.year = takes.year
+  AND instructor.name = 'Lembr'
+ORDER BY takes.ID DESC;
+```
+
 ---
 
-🔄 **আরো সহজে জানতে চাইলে বা যেকোনো প্রশ্ন থাকলে বলো!** আমি ব্যাখ্যাও দিয়ে দেব।
+### 🔹 **b. Question:**
+
+**Find the ID and name of each student (ascending order) who has taken at least one Comp. Sci. course. Make sure there are no duplicate names in the result.**
+
+✅ **Answer:**
+
+```sql
+SELECT DISTINCT student.ID, student.name
+FROM student, takes, course
+WHERE student.ID = takes.ID
+  AND takes.course_id = course.course_id
+  AND course.dept_name = 'Comp. Sci.'
+ORDER BY student.ID ASC;
+```
+
+---
+
+### 🔹 **c. Question:**
+
+**Output instructor names sorted by the ratio of their salary to their department's budget in descending order.**
+
+✅ **Answer:**
+
+```sql
+SELECT instructor.name, (instructor.salary / department.budget) AS ratio
+FROM instructor, department
+WHERE instructor.dept_name = department.dept_name
+ORDER BY ratio DESC;
+```
+
+---
+
+### 🔹 **d. Question:**
+
+**Output instructor names and buildings for each building where an instructor has taught.
+Include instructor names who haven’t taught any classes (building should be NULL).**
+
+✅ **Answer:**
+
+```sql
+SELECT instructor.name, section.building
+FROM instructor
+LEFT JOIN teaches ON instructor.ID = teaches.ID
+LEFT JOIN section ON teaches.course_id = section.course_id 
+                 AND teaches.sec_id = section.sec_id 
+                 AND teaches.semester = section.semester 
+                 AND teaches.year = section.year;
+```
+
+---
+
 
 
 # MID Tearm............................
@@ -180,7 +250,6 @@ prereq(course id, prereq id)
 
 ```
 
-নিচে দেওয়া SQL কোডগুলো সহজ এবং সরল ভাষায় লিখলাম, যাতে আপনি সহজে বুঝতে পারেন:
 
 ### 🔹 **i. Find the titles of courses in the Comp. Sci. department that have 3 credits.**  
 **উত্তর:** কমপক্ষে ৩ ক্রেডিটের কম্পিউটার সায়েন্সের কোর্সের নাম বের করতে:
