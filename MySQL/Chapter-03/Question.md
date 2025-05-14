@@ -1,5 +1,154 @@
-
 # University Database Schema 
+
+### ✅ 1. **Find the titles of courses in the Comp. Sci. department that have 3 credits**
+
+👉 *"Comp. Sci." বিভাগে ৩ ক্রেডিটের কোর্সগুলোর নাম খুঁজে বের করো।*
+
+```sql
+SELECT title
+FROM course
+WHERE dept_name = 'Comp. Sci.' AND credits = 3;
+```
+
+---
+
+### ✅ 2. **Find IDs of students taught by instructor named Firmin (no duplicates)**
+
+👉 *যেসব শিক্ষার্থী 'Firmin' নামের শিক্ষক দ্বারা পড়েছে, তাদের আইডি খুঁজে বের করো।*
+
+```sql
+SELECT DISTINCT takes.ID
+FROM takes, teaches, instructor
+WHERE takes.course_id = teaches.course_id
+  AND takes.sec_id = teaches.sec_id
+  AND takes.semester = teaches.semester
+  AND takes.year = teaches.year
+  AND teaches.ID = instructor.ID
+  AND instructor.name = 'Firmin';
+```
+
+---
+
+### ✅ 3. **Find the highest salary of any instructor**
+
+👉 *সর্বোচ্চ বেতন খুঁজে বের করো।*
+
+```sql
+SELECT MAX(salary) AS highest_salary
+FROM instructor;
+```
+
+---
+
+### ✅ 4. **Find all instructors with the highest salary**
+
+👉 *যেসব শিক্ষকের বেতন সবচেয়ে বেশি, তাদের নাম খুঁজে বের করো।*
+
+```sql
+SELECT name, salary
+FROM instructor
+WHERE salary = (SELECT MAX(salary) FROM instructor);
+```
+
+---
+
+### ✅ 5. **Find enrollment of each section in Autumn 2009**
+
+👉 *Autumn 2009 সেমিস্টারে প্রতিটি সেকশনে কতজন ভর্তি হয়েছিল তা বের করো।*
+
+```sql
+SELECT course_id, sec_id, COUNT(ID) AS enrollment
+FROM takes
+WHERE semester = 'Autumn' AND year = 2009
+GROUP BY course_id, sec_id;
+```
+
+---
+
+### ✅ 6. **Find maximum enrollment in Autumn 2009**
+
+👉 *Autumn 2009 এ কোন সেকশনে সবচেয়ে বেশি ভর্তি হয়েছিল, তার সংখ্যা বের করো।*
+
+```sql
+SELECT MAX(enrollment)
+FROM (
+  SELECT COUNT(ID) AS enrollment
+  FROM takes
+  WHERE semester = 'Autumn' AND year = 2009
+  GROUP BY course_id, sec_id
+) AS temp;
+```
+
+---
+
+### ✅ 7. **Find sections that had maximum enrollment in Autumn 2009**
+
+👉 *যেসব সেকশনে সবচেয়ে বেশি ভর্তি হয়েছিল, সেগুলো খুঁজে বের করো।*
+
+```sql
+SELECT course_id, sec_id
+FROM takes
+WHERE semester = 'Autumn' AND year = 2009
+GROUP BY course_id, sec_id
+HAVING COUNT(ID) = (
+  SELECT MAX(enrollment)
+  FROM (
+    SELECT COUNT(ID) AS enrollment
+    FROM takes
+    WHERE semester = 'Autumn' AND year = 2009
+    GROUP BY course_id, sec_id
+  ) AS temp
+);
+```
+
+---
+
+### ✅ 8. **Count of distinct students taught by instructor ID = 1010122591**
+
+👉 *Instructor ID 1010122591 যে কোর্স পড়িয়েছেন, তাতে কয়জন আলাদা ছাত্র অংশ নিয়েছে?*
+
+```sql
+SELECT COUNT(DISTINCT takes.ID)
+FROM takes, teaches
+WHERE takes.course_id = teaches.course_id
+  AND takes.sec_id = teaches.sec_id
+  AND takes.semester = teaches.semester
+  AND takes.year = teaches.year
+  AND teaches.ID = '1010122591';
+```
+
+---
+
+### ✅ 9. **Insert students with more than 100 credits into instructor table**
+
+👉 *যেসব ছাত্রের ক্রেডিট ১০০ এর বেশি, তাদের instructor টেবিলে insert করো, বেতন হবে 10000।*
+
+```sql
+INSERT INTO instructor(ID, name, dept_name, salary)
+SELECT ID, name, dept_name, 10000
+FROM student
+WHERE tot_cred > 100;
+```
+
+---
+
+### ✅ 10. **Show instructors with number of sections they have taught (even 0)**
+
+👉 *প্রতিটি instructor কতটি section পড়িয়েছেন, সেটি দেখাও। যাঁরা কিছুই পড়াননি, তাদের 0 দেখাও।*
+
+```sql
+SELECT instructor.ID, instructor.name, COUNT(teaches.course_id) AS section_count
+FROM instructor
+LEFT JOIN teaches ON instructor.ID = teaches.ID
+GROUP BY instructor.ID, instructor.name;
+```
+
+---
+
+🔄 **আরো সহজে জানতে চাইলে বা যেকোনো প্রশ্ন থাকলে বলো!** আমি ব্যাখ্যাও দিয়ে দেব।
+
+
+# MID Tearm............................
 
 ```
 classroom(building, room number, capacity)
