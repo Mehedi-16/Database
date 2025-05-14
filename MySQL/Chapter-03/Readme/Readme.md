@@ -611,21 +611,6 @@ WHERE NOT EXISTS (
 );
 ```
 ## ✅ ব্যাখ্যা:
-
-```sql
-SELECT ID, name
-FROM student
-WHERE NOT EXISTS (
-    (SELECT course_id FROM course WHERE dept_name = 'Biology')
-    EXCEPT
-    (SELECT course_id 
-     FROM takes  
-     WHERE student.ID = takes.ID)
-);
-```
-
----
-
 ### 🔍 কী হচ্ছে এই কোয়েরিতে?
 
 #### 📌 বাইরের অংশ:
