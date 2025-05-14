@@ -549,8 +549,7 @@ WHERE salary > ANY (
 
 ```
 
-## 6. Find the names of all instructors that have a salary value greater than that of each
-instructor in the Biology department.
+## 6. Find the names of all instructors that have a salary value greater than that of each instructor in the Biology department.
 ## or Find the names of all instructors whose salary is greater than every instructor in the Biology department
 
 ```sql
