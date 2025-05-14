@@ -530,6 +530,9 @@ WHERE teaches.course_id = takes.course_id
   AND teaches.year = takes.year
   AND teaches.ID = 110011;
 ```
+> Important Note: এখানে takes.ID হলো student এর ID
+আর teaches.ID হলো instructor এর ID — এটা কখনোই সমান হওয়া উচিত না।
+so takes.ID = teaches.ID কোনো ভাবেই লিখা যাবে না
 
 ## 5. Find the names of all instructors whose salary is greater than at least one instructor in the Biology department
 ```sql
