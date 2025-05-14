@@ -433,6 +433,13 @@ Having avg(salary);
    WHERE instructor.ID = teaches.ID AND semester = 'Spring' AND year = 2018
    GROUP BY dept_name;
    ```
+      ### অথবা ###
+```
+SELECT dept_name, COUNT(DISTINCT instructor.ID)
+FROM instructor, teaches
+WHERE instructor.ID = teaches.ID AND semester = 'Spring' AND year = 2018
+GROUP BY dept_name;
+```
 
 8. **Erroneous query where ID does not appear in the group by clause:**
    ```sql
