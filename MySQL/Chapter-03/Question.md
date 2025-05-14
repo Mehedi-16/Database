@@ -17,8 +17,6 @@ prereq(course id, prereq id)
 
 ### ✅ 1. **Find the titles of courses in the Comp. Sci. department that have 3 credits**
 
-👉 *"Comp. Sci." বিভাগে ৩ ক্রেডিটের কোর্সগুলোর নাম খুঁজে বের করো।*
-
 ```sql
 SELECT title
 FROM course
@@ -27,26 +25,17 @@ WHERE dept_name = 'Comp. Sci.' AND credits = 3;
 
 ---
 
-### ✅ 2. **Find IDs of students taught by instructor named Firmin (no duplicates)**
-
-👉 *যেসব শিক্ষার্থী 'Firmin' নামের শিক্ষক দ্বারা পড়েছে, তাদের আইডি খুঁজে বের করো।*
+### ✅ 2. **Find the IDs of all students who were taught by an instructor named Einstein; make sure there are no duplicates in the result.**
 
 ```sql
-SELECT DISTINCT takes.ID
-FROM takes, teaches, instructor
-WHERE takes.course_id = teaches.course_id
-  AND takes.sec_id = teaches.sec_id
-  AND takes.semester = teaches.semester
-  AND takes.year = teaches.year
-  AND teaches.ID = instructor.ID
-  AND instructor.name = 'Firmin';
+SELECT DISTINCT teaches.ID
+FROM teaches,instructor
+WHERE teaches.ID = instructor.ID
+AND instructor.name = 'Einstein';
 ```
-
 ---
 
 ### ✅ 3. **Find the highest salary of any instructor**
-
-👉 *সর্বোচ্চ বেতন খুঁজে বের করো।*
 
 ```sql
 SELECT MAX(salary) AS highest_salary
@@ -57,34 +46,32 @@ FROM instructor;
 
 ### ✅ 4. **Find all instructors with the highest salary**
 
-👉 *যেসব শিক্ষকের বেতন সবচেয়ে বেশি, তাদের নাম খুঁজে বের করো।*
-
 ```sql
 SELECT name, salary
 FROM instructor
-WHERE salary = (SELECT MAX(salary) FROM instructor);
+WHERE salary = (SELECT MAX(salary) 
+                FROM instructor);
 ```
 
 ---
 
-### ✅ 5. **Find enrollment of each section in Autumn 2009**
-
-👉 *Autumn 2009 সেমিস্টারে প্রতিটি সেকশনে কতজন ভর্তি হয়েছিল তা বের করো।*
+### ✅ 5. **Find enrollment of each section in Fall 2017**
 
 ```sql
-SELECT course_id, sec_id, COUNT(ID) AS enrollment
+SELECT course_id, sec_id, semester, year, COUNT(ID) AS enrollment
 FROM takes
-WHERE semester = 'Autumn' AND year = 2009
-GROUP BY course_id, sec_id;
+WHERE semester = 'Fall' AND year = 2017
+GROUP BY course_id, sec_id, semester, year;
 ```
 
 ---
 
-### ✅ 6. **Find maximum enrollment in Autumn 2009**
+### ✅ 6. **Find maximum enrollment in Fall 2017**
 
-👉 *Autumn 2009 এ কোন সেকশনে সবচেয়ে বেশি ভর্তি হয়েছিল, তার সংখ্যা বের করো।*
+👉 *Fall 20017 এ কোন সেকশনে সবচেয়ে বেশি ভর্তি হয়েছিল, তার সংখ্যা বের করো।*
 
 ```sql
+
 SELECT MAX(enrollment)
 FROM (
   SELECT COUNT(ID) AS enrollment
@@ -118,18 +105,17 @@ HAVING COUNT(ID) = (
 
 ---
 
-### ✅ 8. **Count of distinct students taught by instructor ID = 1010122591**
-
-👉 *Instructor ID 1010122591 যে কোর্স পড়িয়েছেন, তাতে কয়জন আলাদা ছাত্র অংশ নিয়েছে?*
+### ✅ 8. **Find the total number of (distinct) students who have taken course sections taught by instructor ID 110011**
 
 ```sql
-SELECT COUNT(DISTINCT takes.ID)
-FROM takes, teaches
-WHERE takes.course_id = teaches.course_id
-  AND takes.sec_id = teaches.sec_id
-  AND takes.semester = teaches.semester
-  AND takes.year = teaches.year
-  AND teaches.ID = '1010122591';
+SELECT COUNT(DISTINCT takes.ID) AS total_students
+FROM teaches, takes
+WHERE teaches.course_id = takes.course_id
+  AND teaches.sec_id = takes.sec_id
+  AND teaches.semester = takes.semester
+  AND teaches.year = takes.year
+  AND teaches.ID = 110011;
+
 ```
 
 ---
@@ -139,15 +125,17 @@ WHERE takes.course_id = teaches.course_id
 👉 *যেসব ছাত্রের ক্রেডিট ১০০ এর বেশি, তাদের instructor টেবিলে insert করো, বেতন হবে 10000।*
 
 ```sql
-INSERT INTO instructor(ID, name, dept_name, salary)
+
+INSERT INTO instructor (ID, name, dept_name, salary)
 SELECT ID, name, dept_name, 10000
 FROM student
 WHERE tot_cred > 100;
+
 ```
 
 ---
 
-### ✅ 10. **Show instructors with number of sections they have taught (even 0)**
+### ✅ 10. **Display a list of all instructors, showing their ID, name, and the number of sections that they have taught. Make sure to show the number of sections as 0 for instructors who have not taught any section. Your query should use an outerjoin, and should not use scalar subqueries.**
 
 👉 *প্রতিটি instructor কতটি section পড়িয়েছেন, সেটি দেখাও। যাঁরা কিছুই পড়াননি, তাদের 0 দেখাও।*
 
@@ -162,20 +150,17 @@ GROUP BY instructor.ID, instructor.name;
 
 ### 🔹 **a. Question:**
 
-**Find the IDs of all students (in descending order) who were taught by an instructor named 'Lembr'. Make sure there are no duplicate student IDs in the result.**
+**Find the IDs of all students (in descending order) who were taught by an instructor named 'EINSTIN'. Make sure there are no duplicate student IDs in the result.**
 
 ✅ **Answer:**
 
 ```sql
-SELECT DISTINCT takes.ID
-FROM instructor, teaches, takes
-WHERE instructor.ID = teaches.ID
-  AND teaches.course_id = takes.course_id
-  AND teaches.sec_id = takes.sec_id
-  AND teaches.semester = takes.semester
-  AND teaches.year = takes.year
-  AND instructor.name = 'Lembr'
-ORDER BY takes.ID DESC;
+SELECT DISTINCT teaches.ID
+FROM teaches, instructor
+WHERE teaches.ID = instructor.ID
+AND instructor.name = 'Einstein'
+ORDER BY teaches.ID DESC;
+
 ```
 
 ---
@@ -188,11 +173,12 @@ ORDER BY takes.ID DESC;
 
 ```sql
 SELECT DISTINCT student.ID, student.name
-FROM student, takes, course
+FROM student,takes,course
 WHERE student.ID = takes.ID
-  AND takes.course_id = course.course_id
-  AND course.dept_name = 'Comp. Sci.'
+AND takes.course_id = course.course_id
+ AND course.dept_name = 'Comp. Sci.'
 ORDER BY student.ID ASC;
+
 ```
 
 ---
