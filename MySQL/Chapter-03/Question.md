@@ -1,5 +1,20 @@
 # University Database Schema 
 
+```
+classroom(building, room number, capacity)
+department(dept name, building, budget)
+course(course id, title, dept name, credits)
+instructor(ID, name, dept name, salary)
+section(course id, sec id, semester, year, building, room number, time slot id)
+teaches(ID, course id, sec id, semester, year)
+student(ID, name, dept name, tot cred)
+takes(ID, course id, sec id, semester, year, grade)
+advisor(s ID, i ID)
+time slot(time slot id, day, start time, end time)
+prereq(course id, prereq id)
+
+```
+
 ### ✅ 1. **Find the titles of courses in the Comp. Sci. department that have 3 credits**
 
 👉 *"Comp. Sci." বিভাগে ৩ ক্রেডিটের কোর্সগুলোর নাম খুঁজে বের করো।*
