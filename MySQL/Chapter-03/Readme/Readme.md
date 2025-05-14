@@ -411,6 +411,13 @@ WHERE instructor.ID = teaches.ID AND instructor.dept_name = 'Comp. Sci.';
    from instructor
    group by dept_name;
    ```
+   ### অথবা ###
+```
+select dept_name, avg(salary)
+from instructor
+group by dept_name
+Having avg(salary);
+```
 
 6. **Find the average salary of all instructors (without grouping):**
    ```sql
