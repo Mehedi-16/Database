@@ -541,7 +541,7 @@ WHERE i1.salary > i2.salary AND i2.dept_name = 'Biology';
 ```
 SELECT name
 FROM instructor
-WHERE salary > SOME (
+WHERE salary > ANY (
     SELECT salary
     FROM instructor
     WHERE dept_name = 'Biology'
@@ -551,8 +551,8 @@ WHERE salary > SOME (
 
 ## 6. Find the names of all instructors that have a salary value greater than that of each
 instructor in the Biology department.
-<br>
-Find the names of all instructors whose salary is greater than every instructor in the Biology department
+## or Find the names of all instructors whose salary is greater than every instructor in the Biology department
+
 ```sql
 
 SELECT name
