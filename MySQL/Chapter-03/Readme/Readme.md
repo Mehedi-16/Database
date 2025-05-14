@@ -369,7 +369,7 @@ WHERE instructor.ID = teaches.ID AND instructor.dept_name = 'Comp. Sci.';
    where salary is null;
    ```
 
-2. **Find instructors with a salary greater than 10000 where the result of the comparison is unknown:**
+2. **Find instructors with a salary greater than 10000 where the result of the comparison is unknown:** <br>
    Note: NULL এবং comparison is unknown সেইম জিনিস (salary > 10000 IS UNKNOWN মানে হলো, যেসব instructor-এর salary NULL)
    ```sql
    select name
