@@ -522,13 +522,13 @@ WHERE name NOT IN ('Mozart', 'Einstein');
 
 ## 4. Find the total number of (distinct) students who have taken course sections taught by instructor ID 110011
 ```sql
-SELECT COUNT(DISTINCT ID)
-FROM takes
-WHERE (course_id, sec_id, semester, year) IN (
-    SELECT course_id, sec_id, semester, year
-    FROM teaches
-    WHERE teaches.ID = '10101'
-);
+SELECT COUNT(DISTINCT takes.ID) AS total_students
+FROM teaches, takes
+WHERE teaches.course_id = takes.course_id
+  AND teaches.sec_id = takes.sec_id
+  AND teaches.semester = takes.semester
+  AND teaches.year = takes.year
+  AND teaches.ID = 110011;
 ```
 
 ## 5. Find the names of all instructors whose salary is greater than at least one instructor in the Biology department
