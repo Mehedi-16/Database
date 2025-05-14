@@ -533,6 +533,12 @@ WHERE teaches.course_id = takes.course_id
 
 ## 5. Find the names of all instructors whose salary is greater than at least one instructor in the Biology department
 ```sql
+SELECT DISTINCT i1.name
+FROM instructor i1, instructor i2
+WHERE i1.salary > i2.salary AND i2.dept_name = 'Biology';
+```
+### অথবা ###
+```
 SELECT name
 FROM instructor
 WHERE salary > SOME (
@@ -540,6 +546,7 @@ WHERE salary > SOME (
     FROM instructor
     WHERE dept_name = 'Biology'
 );
+
 ```
 
 ## 6. Find the names of all instructors whose salary is greater than every instructor in the Biology department
